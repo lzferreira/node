@@ -1,50 +1,29 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const crmController_1 = require("./../controllers/crmController");
 class Routes {
+    constructor() {
+        this.processoController = new crmController_1.ProcessoController();
+    }
     routes(app) {
         app.route('/')
             .get((req, res) => {
             res.status(200).send({
-                message: 'GET request successfulll!!!!'
+                message: 'GET request successfulll!'
             });
         });
         // Contact 
         app.route('/processo')
             // GET endpoint 
-            .get((req, res) => {
-            // Get all contacts            
-            res.status(200).send({
-                message: 'GET request successfulll!!!!'
-            });
-        })
+            .get(this.processoController.getProcessos)
             // POST endpoint
-            .post((req, res) => {
-            // Create new contact         
-            res.status(200).send({
-                message: 'POST request successfulll!!!!'
-            });
-        });
+            .post(this.processoController.addNewProcesso);
         // Contact detail
         app.route('/processo/:processoId')
             // get specific contact
-            .get((req, res) => {
-            // Get a single contact detail            
-            res.status(200).send({
-                message: 'GET request successfulll!!!!'
-            });
-        })
-            .put((req, res) => {
-            // Update a contact           
-            res.status(200).send({
-                message: 'PUT request successfulll!!!!'
-            });
-        })
-            .delete((req, res) => {
-            // Delete a contact     
-            res.status(200).send({
-                message: 'DELETE request successfulll!!!!'
-            });
-        });
+            .get(this.processoController.getProcessoWithID)
+            .put(this.processoController.updateProcesso)
+            .delete(this.processoController.deleteProcesso);
     }
 }
 exports.Routes = Routes;
