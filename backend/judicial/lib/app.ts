@@ -1,5 +1,6 @@
 import * as express from "express";
 import * as bodyParser from "body-parser";
+import * as cors from "cors";
 import { Routes } from "./routes/crmRoutes";
 import * as mongoose from "mongoose";
 
@@ -22,6 +23,20 @@ class App {
     }
 
     private config(): void{
+        var originsWhitelist = [
+            'http://localhost:4200'
+          ];
+
+          var corsOptions = {
+            origin: function(origin, callback){
+                  var isWhitelisted = originsWhitelist.indexOf(origin) !== -1;
+                  callback(null, isWhitelisted);
+            },
+            credentials:true
+          }
+        
+        this.app.use(cors(corsOptions));
+
         // support application/json type post data
         this.app.use(bodyParser.json());
         //support application/x-www-form-urlencoded post data

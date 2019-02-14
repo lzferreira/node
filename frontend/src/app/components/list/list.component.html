@@ -1,0 +1,38 @@
+<div>
+  <br>
+  <mat-card>
+    <button mat-raised-button color="primary" routerLink="/create">Cadastar Novo Processo</button>
+    <br><br>
+    <mat-divider></mat-divider>
+    <br>
+    <mat-table [dataSource]="processos">
+      <ng-container matColumnDef="numeroProcesso">
+        <mat-header-cell *matHeaderCellDef> Número Processo </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.numeroProcesso}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="reclamante">
+        <mat-header-cell *matHeaderCellDef> Reclamante </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.reclamante}} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="company">
+        <mat-header-cell *matHeaderCellDef> Companhia </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.company}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <mat-header-cell *matHeaderCellDef class="mat-column-right"> Actions </mat-header-cell>
+        <mat-cell *matCellDef="let element" class="mat-column-right">
+          <button mat-button color="primary" (click)="editProcesso(element._id)">Edit</button>
+          <button mat-button color="warn" (click)="deleteProcesso(element._id)">Delete</button>
+        </mat-cell>
+      </ng-container>
+      
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+      
+      
+      
+  </mat-card>
+</div>
+
