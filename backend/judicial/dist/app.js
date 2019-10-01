@@ -8,7 +8,7 @@ const mongoose = require("mongoose");
 class App {
     constructor() {
         this.routePrv = new crmRoutes_1.Routes();
-        this.mongoUrl = 'mongodb://jud:judicial1@ds127655.mlab.com:27655/judicial';
+        this.mongoUrl = 'mongodb://localhost:27017/';
         this.app = express();
         this.config();
         this.routePrv.routes(this.app);

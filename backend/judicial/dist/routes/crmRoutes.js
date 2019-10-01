@@ -14,13 +14,10 @@ class Routes {
         });
         // Contact 
         app.route('/processo')
-            // GET endpoint 
             .get(this.processoController.getProcessos)
-            // POST endpoint
             .post(this.processoController.addNewProcesso);
         // Contact detail
         app.route('/processo/:processoId')
-            // get specific contact
             .get(this.processoController.getProcessoWithID)
             .put(this.processoController.updateProcesso)
             .delete(this.processoController.deleteProcesso);

@@ -8,7 +8,7 @@ class App {
 
     public app: express.Application;
     public routePrv: Routes = new Routes();
-    public mongoUrl: string = 'mongodb://jud:judicial1@ds127655.mlab.com:27655/judicial';
+    public mongoUrl: string = 'mongodb://localhost:27017/';
 
     constructor() {
         this.app = express();
