@@ -5,10 +5,12 @@ const requireDir = require('require-dir');
 const app = express();
 app.use(express.json());
 
-mongoose.connect('mongodb+srv://lzferreira:lzferreira@clusterteste-gpu6n.mongodb.net/test?retryWrites=true&w=majority', {
-    useNewUrlParser:true,
-    useUnifiedTopology:true,
-})
+//mongoose.connect('mongodb+srv://lzferreira:lzferreira@clusterteste-gpu6n.mongodb.net/test?retryWrites=true&w=majority', {
+//    useNewUrlParser:true,
+//    useUnifiedTopology:true,
+//})
+
+mongoose.connect('mongodb://localhost:27017/nodeapi', { useUnifiedTopology: true, useNewUrlParser:true });
 
 requireDir('./src/models');
 
